@@ -30,7 +30,7 @@ public class RestfullClient {
         cars.add(new Car(101, "速腾", 100.24));
         cars.add(new Car(101, "别克", 500.69));
         User user = new User(1001, "阿强", "南京", cars);
-        WebClient client = WebClient.create("http://127.0.0.1:8081/ws/service/addUser");
+        WebClient client = WebClient.create("http://localhost:8080/ws/webService/userService/addUser");
         //POST方式请求xml格式的数据，响应xml格式的数据
         client.type(MediaType.APPLICATION_XML_TYPE)
                 .accept(MediaType.APPLICATION_XML_TYPE)
@@ -44,7 +44,7 @@ public class RestfullClient {
      */
     @Test
     public void get_queryUse() {
-        WebClient client = WebClient.create("http://127.0.0.1:8081/ws/service/queryUser");
+        WebClient client = WebClient.create("http://localhost:8080/ws/webService/userService/queryUser");
         User user = client.accept(MediaType.APPLICATION_XML_TYPE)
                 .type(MediaType.APPLICATION_XML_TYPE).get(User.class);
         System.out.println(user);
@@ -63,7 +63,7 @@ public class RestfullClient {
         cars.add(new Car(101, "别克", 500.69));
         User user = new User(1001, "阿强", "南京", cars);
 
-        WebClient client = WebClient.create("http://127.0.0.1:8081/ws/service/updateUser");
+        WebClient client = WebClient.create("http://localhost:8080/ws/webService/userService/updateUser");
         client.accept(MediaType.APPLICATION_XML_TYPE)
                 .type(MediaType.APPLICATION_XML_TYPE)
                 .put(user);
@@ -79,7 +79,7 @@ public class RestfullClient {
     @Test
     public void delete_deleteUser() {
 
-        WebClient client = WebClient.create("http://127.0.0.1:8081/ws/service/deleteUser?id=10001");
+        WebClient client = WebClient.create("http://localhost:8080/ws/webService/userService/deleteUser?id=10001");
         client.delete();
     }
 }

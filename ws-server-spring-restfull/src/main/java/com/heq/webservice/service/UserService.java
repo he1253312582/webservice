@@ -1,10 +1,8 @@
-package com.heq.service;
+package com.heq.webservice.service;
 
 import com.heq.entity.User;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import java.util.List;
 
 /**
  * Created user ： heqiang
@@ -19,9 +17,9 @@ import java.util.List;
  * @Produces ：服务器支持的返回数据的结构类型
  * @Consumes ：服务器支持的请求数据的结构类型
  */
-@Path("/service")
+@Path("/userService")
 @Produces("*/*")
-public interface Service {
+public interface UserService {
 
 
     /**
@@ -30,7 +28,6 @@ public interface Service {
     @POST
     @Path("/addUser")
     @Consumes({"application/xml", "application/json"})
-    @Produces({"application/xml", "application/json"})
     public abstract void addUser(User user);
 
     /**
@@ -39,7 +36,6 @@ public interface Service {
     @PUT
     @Path("/updateUser")
     @Consumes({"application/xml", "application/json"})
-    @Produces({"application/xml", "application/json"})
     public abstract void updateUser(User user);
 
 
@@ -49,9 +45,7 @@ public interface Service {
     @GET
     @Path("/queryUser")
     @Produces({"application/xml", "application/json"})
-    @Consumes({"application/xml", "application/json"})
     public abstract User queryUser();
-
 
     /**
      * DELETE请求来删除用户
@@ -59,6 +53,5 @@ public interface Service {
     @DELETE
     @Path("/deleteUser")
     @Produces({"application/xml", "application/json"})
-    @Consumes({"application/xml", "application/json"})
-    public abstract void deleteUser(@PathParam("aid") Integer aid);
+    public abstract void deleteUser(@PathParam(value = "id")Integer id);
 }
