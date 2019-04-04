@@ -1,0 +1,14 @@
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.idea
+*.logs
+*.ctxt
+*.iml
+*.class
+logs
+out
