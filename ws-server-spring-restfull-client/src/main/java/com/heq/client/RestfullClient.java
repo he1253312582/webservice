@@ -4,6 +4,8 @@ import com.heq.entity.Car;
 import com.heq.entity.User;
 import org.apache.cxf.jaxrs.client.WebClient;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
@@ -17,8 +19,7 @@ import java.util.List;
  */
 @SuppressWarnings("all")
 public class RestfullClient {
-
-
+    Logger log = LoggerFactory.getLogger(this.getClass());
     /**
      * 添加用户
      * type()：请求的数据格式
@@ -47,7 +48,7 @@ public class RestfullClient {
         WebClient client = WebClient.create("http://localhost:8080/ws/webService/userService/queryUser");
         User user = client.accept(MediaType.APPLICATION_XML_TYPE)
                 .type(MediaType.APPLICATION_XML_TYPE).get(User.class);
-        System.out.println(user);
+        log.info(user.toString());
     }
 
 
@@ -68,7 +69,6 @@ public class RestfullClient {
                 .type(MediaType.APPLICATION_XML_TYPE)
                 .put(user);
     }
-
 
 
     /**
