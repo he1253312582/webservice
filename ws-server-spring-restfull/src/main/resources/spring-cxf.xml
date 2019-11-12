@@ -13,10 +13,10 @@
         http://cxf.apache.org/jaxrs
         http://cxf.apache.org/schemas/jaxrs.xsd">
 
-    <jaxrs:server address="/webService">
-        <jaxrs:serviceBeans>
+    <!-- 请求的URL : http://localhost:8080/ws/webService?wsdl -->
+    <jaxws:server serviceName="com.heq.webservice.service.UserService" address="/webService">
+        <jaxws:serviceBean>
             <bean class="com.heq.webservice.serviceImpl.UserServiceImpl"/>
-        </jaxrs:serviceBeans>
-
-    </jaxrs:server>
+        </jaxws:serviceBean>
+    </jaxws:server>
 </beans>

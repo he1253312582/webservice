@@ -16,7 +16,6 @@ import java.util.List;
  * Description : No Description
  * version : 1.0
  */
-@SuppressWarnings("all")
 public class UserServiceImpl implements UserService {
 
     Logger log = LoggerFactory.getLogger(this.getClass());
@@ -24,7 +23,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addUser(User user) {
-
         log.info(user.toString());
         log.info("添加用户成功！！");
     }
@@ -37,18 +35,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User queryUser() {
-        List<Car> cars =new ArrayList<Car>();
-        cars.add(new Car(101,"速腾",100.24));
-        cars.add(new Car(101,"别克",500.69));
-       User user =new User(1001,"阿强","南京",cars);
-
+        List<Car> cars = new ArrayList<Car>();
+        cars.add(new Car(101, "速腾", 100.24));
+        cars.add(new Car(101, "别克", 500.69));
+        User user = new User(1001, "阿强", "南京", cars);
         log.info("查询用户成功！！");
         return user;
     }
 
     @Override
     public void deleteUser(Integer id) {
-        log.info("用户ID为："+id);
+        log.info("用户ID为：" + id);
         log.info("删除用户成功！！");
     }
 }

@@ -16,10 +16,9 @@ public class UserDaoImpl implements UserDao {
 
     Logger log = LoggerFactory.getLogger(this.getClass());
 
-
     @Override
     public String queryUser() {
         log.info("欢迎使用springMVC");
-        return "helloWold!";
+        return "欢迎使用springMVC!";
     }
 }

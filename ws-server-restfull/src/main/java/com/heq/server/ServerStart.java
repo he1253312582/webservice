@@ -1,9 +1,13 @@
 package com.heq.server;
 
-import com.heq.service.ServiceImpl;
-import org.apache.cxf.interceptor.LoggingInInterceptor;
-import org.apache.cxf.interceptor.LoggingOutInterceptor;
+import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
+import com.heq.serviceImpl.ProductServiceImpl;
 import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
+import org.apache.cxf.jaxrs.lifecycle.ResourceProvider;
+import org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created user ： heqiang
@@ -13,17 +17,29 @@ import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
  */
 public class ServerStart {
 
-public static void main(String[] args) {
+    public static void main(String[] args) {
 
-    JAXRSServerFactoryBean factoryBean = new JAXRSServerFactoryBean();
-    factoryBean.setAddress("http://127.0.0.1:8081/ws/");
-    factoryBean.setServiceClass(ServiceImpl.class);
-    factoryBean.create();
 
-    factoryBean.getInInterceptors().add(new LoggingInInterceptor());
-    factoryBean.getOutInterceptors().add(new LoggingOutInterceptor());
+        // 添加ResourceClass
+        List<Class<?>> resourceClassList = new ArrayList<Class<?>>();
+        resourceClassList.add(ProductServiceImpl.class);
 
-    System.out.println("服务器RestFull风格的WesService服务器启动成功！");
-}
+        // 添加ResourceProvider
+        List<ResourceProvider> resourceProviderList = new ArrayList<ResourceProvider>();
+        resourceProviderList.add(new SingletonResourceProvider(new ProductServiceImpl()));
+
+        //添加provider
+        List<Object> providerList = new ArrayList<Object>();
+        providerList.add(new JacksonJsonProvider());
+
+        //发布REST任务
+        JAXRSServerFactoryBean factory = new JAXRSServerFactoryBean();
+        factory.setAddress("http://localhost:8080/ws/rest");
+        factory.setResourceClasses(resourceClassList);
+        factory.setResourceProviders(resourceProviderList);
+        factory.setProviders(providerList);
+        factory.create();
+        System.out.println("服务器RestFull风格的WesService服务器启动成功！");
+    }
 
 }

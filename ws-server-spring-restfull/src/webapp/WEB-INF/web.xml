@@ -25,11 +25,13 @@
     <servlet-mapping>
         <servlet-name>springMVC</servlet-name>
         <url-pattern>*.do</url-pattern>
+
     </servlet-mapping>
 
     <servlet>
         <servlet-name>cxfServlet</servlet-name>
         <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>cxfServlet</servlet-name>
@@ -52,7 +54,7 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath*:spring-cxf.xml</param-value>
@@ -61,7 +63,6 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-    
-    
+
 
 </web-app>
