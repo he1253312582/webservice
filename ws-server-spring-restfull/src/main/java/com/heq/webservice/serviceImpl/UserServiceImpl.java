@@ -20,7 +20,6 @@ public class UserServiceImpl implements UserService {
 
     Logger log = LoggerFactory.getLogger(this.getClass());
 
-
     @Override
     public void addUser(User user) {
         log.info(user.toString());

@@ -5,8 +5,8 @@ import com.heq.entity.Product;
 import javax.jws.WebService;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @WebService
 public interface ProductService {
@@ -55,7 +55,7 @@ public interface ProductService {
     @Path("/product/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    Product updateProductById(@PathParam("id") long id, Map<String, Object> fieldMap);
+    Product updateProductById(@PathParam("id") Long id, HashMap<String, Object> fieldMap);
 
     @PUT
     @Path("/product")

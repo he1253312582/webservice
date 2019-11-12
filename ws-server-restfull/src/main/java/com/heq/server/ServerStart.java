@@ -39,6 +39,7 @@ public class ServerStart {
         factory.setResourceProviders(resourceProviderList);
         factory.setProviders(providerList);
         factory.create();
+        System.out.println("http://localhost:8080/ws/rest");
         System.out.println("服务器RestFull风格的WesService服务器启动成功！");
     }
 

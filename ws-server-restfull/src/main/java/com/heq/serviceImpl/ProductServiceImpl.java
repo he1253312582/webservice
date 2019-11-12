@@ -70,7 +70,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product updateProductById(long id, Map<String, Object> fieldMap) {
+    public Product updateProductById(Long id, HashMap<String, Object> fieldMap) {
         Product product = retrieveProductById(id);
         if (product != null) {
             try {
@@ -78,7 +78,6 @@ public class ProductServiceImpl implements ProductService {
                     Field field = Product.class.getDeclaredField(fieldEntry.getKey());
                     field.setAccessible(true);
                     field.set(product, fieldEntry.getValue());
-
                 }
             } catch (Exception e) {
                 e.printStackTrace();
